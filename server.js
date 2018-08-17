@@ -11,7 +11,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 
-var PORT = 27017;
+var PORT = process.env.PORT || 27017;
 
 //Database configuration
 mongoose.connect('mongodb://localhost/entertainmentnews');
@@ -24,7 +24,6 @@ db.once('open', function () {
 console.log('Mongoose connection successful.');
 });
 
-//Require Schemas
 var Note = require('./models/Note.js');
 var Article = require('./models/Article.js');
 
